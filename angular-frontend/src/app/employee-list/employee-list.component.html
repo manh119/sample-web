@@ -1,0 +1,52 @@
+<br>
+<div style="margin-left:10px ;">
+    <mat-form-field>
+        <mat-label>Choose Department</mat-label>
+        <mat-select [(value)]="selectedDepartment" (selectionChange)="updateByDepartment()">
+            <mat-option *ngFor="let department of departments" [value]="department.value">{{department.viewValue}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>  
+<div style="display: flex;justify-content: space-between">
+    <form>
+    <input type="text" placeholder="Search by name" name="searchText" [(ngModel)]="searchText" (input)="searchResults()">
+    </form>  
+
+  
+
+    <div>    
+        <button (click)="exportData()" class="btn btn-primary" style="margin-right: 10px;">Import</button>
+        <button (click)="exportData()" class="btn btn-primary">Export</button>
+    </div>
+</div>
+<br>
+<br>
+<table class = "table table-striped" style="margin-top: 10px;">
+    <thead>
+        <tr>
+            <th (click)="setSorting('name')"> # </th>
+            <th (click)="setSorting('name')"> Name </th>
+            <th (click)="setSorting('email')"> Email </th>
+            <th (click)="setSorting('age')"> Age </th>
+            <th (click)="setSorting('salary')"> Salary </th>
+            <th (click)="setSorting('department')"> Department </th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let employee of employees;  let i = index" (click)="employeeDetails(employee.id)">
+            <td> {{ i + 1 }} </td>
+            <td> {{ employee.name }} </td>
+            <td> {{ employee.email }} </td>
+            <td> {{ employee.age }} </td>
+            <td> {{ employee.salary }} </td>
+            <td> {{ employee.department }} </td>
+
+            <td>
+                <button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update</button>
+                <button (click)="openConfirmationDialog(employee.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
+</mat-paginator>
