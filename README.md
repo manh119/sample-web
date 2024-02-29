@@ -1,10 +1,10 @@
 ## Features
 
-- Search by Name and Department
-- Sorting options (ascending and descending) for various fields
-- Pagination with navigation buttons
-- Add, edit, and delete employee details
-- Export to Excel functionality
+- Tìm kiếm theo tên và phòng ban
+- Sắp xếp
+- Phân trang
+- Thêm, sửa, xóa chi tiết nhân viên
+- Export/Import excel
 
 
 
